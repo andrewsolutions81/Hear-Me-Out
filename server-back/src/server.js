@@ -1,17 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors')
-const mongoose = require('mongoose')
-
-
-
 const express = require("express");
 require("dotenv").config(); /*Solo se usa en Local no en producción*/
 const morgan = require('morgan'); /*Solo se usa en Local no en producción*/
+const bodyParser = require('body-parser');///
+const mongoose = require('mongoose')////
 const cors = require('cors')
-const { connect } = require("./db")
+const { connect } = require("./database")
 const applicationRoutes = require('./routes')
-const { transporter, verify } = require('./utils/mailer')
 
 
 const app = express();
@@ -27,11 +21,12 @@ app.use(cors({
 }))
 
 app.use(express.json())
+app.use(bodyParser.json({limit: "30mb", extended: true}))
+app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
 app.use(morgan('dev'))/*Solo se usa en Local no en producción*/
-verify(transporter)
 
 applicationRoutes(app)
 
 app.listen(port, () => {
-  console.log(`✅ Server listening on port ${port}!`)
+  console.log(`✅ Server listening on port ${port}`)
 })

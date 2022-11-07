@@ -2,7 +2,7 @@
   "name": "server-back",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
@@ -18,8 +18,8 @@
     "mongoose": "^6.7.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20",
     "dotenv": "^16.0.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20"
   }
 }

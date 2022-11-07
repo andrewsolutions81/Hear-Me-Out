@@ -5,7 +5,7 @@ function connect() {
   mongoose.connect(mongoDb)
 
   mongoose.connection.once("open", () => {
-    console.log("✅ Connected to mongo data base!")
+    console.log("✅ Connected to mongo data base")
   })
 
   mongoose.connection.on("error", (err) => {
