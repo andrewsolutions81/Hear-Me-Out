@@ -40,16 +40,16 @@ const UserSchema = new Schema(
       type: Boolean,
       default: true,
     },
+    projects:[{
+      //figure this out
+    }],
+    comments:[{
+      //ref to comments
+    }],
     payment: {
       type: String,
       default: "",
     },
-    posts:[{
-      //ref to posts
-    }],
-    comments:[{
-      //ref to comments
-    }]
   },
   { timestamps: true }
 );

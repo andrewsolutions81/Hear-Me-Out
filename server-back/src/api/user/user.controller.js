@@ -95,8 +95,8 @@ module.exports = {
         throw new Error("Token expired")
       }
 
-       updatedUser = await User.findByIdAndUpdate(user, data, { new: true } )
-      // const { userName, email, avatar, role, rank,} = userModified
+      updatedUser = await User.findByIdAndUpdate(user, data, { new: true } )
+
       res.status(200).json({  message: "✅user modify", info:updatedUser})
     } catch (error) {
       res.status(400).json({ message: "❌user could not be modified ", error:error.message })
