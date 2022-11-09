@@ -1,14 +1,20 @@
 const { model, Schema, models } = require("mongoose");
+const User = require('../user/user.model');
+const Post = require('../comment/comment.model')
 
 const projectsSchema = new Schema(
   {
+    projectAuthor: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     title: {
       type: String,
       required: true,
     },
-    owner: {
+    description: {
       type: String,
-      required: true,
     },
     category: {
       type: String,
@@ -16,19 +22,15 @@ const projectsSchema = new Schema(
     },
     posts:[
       {
-      media: [
-        postImage: {
-          type: String,
-        },
-        postVideo: {
-          type: String,
-        },
-        postThumbnail: {
-          type: String,
-        },
-
-      ],
-    }],
+        type: Schema.Types.ObjectId,
+        ref: "Post"
+      }
+    ],
+    likeRate :{
+      type: Number,
+      default: 0,
+      //minimo
+    },
   },
   { timestamps: true }
 );

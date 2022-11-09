@@ -15,7 +15,7 @@ const UserSchema = new Schema(
     email: {
       type: String,
       required: true,
-      unique: [true, 'already taken'],
+      unique: [true, "already taken"],
     },
     password: {
       type: String,
@@ -29,23 +29,29 @@ const UserSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ['user', 'admin', 'buisness'],
-      default: 'user',
+      enum: ["user", "admin", "buisness"],
+      default: "user",
     },
-    rank:{
+    rank: {
       type: Number,
-      default: 0
+      default: 0,
     },
     isActive: {
       type: Boolean,
       default: true,
     },
-    projects:[{
-      //figure this out
-    }],
-    comments:[{
-      //ref to comments
-    }],
+    projects: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Project",
+      },
+    ],
+    comments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
     payment: {
       type: String,
       default: "",
