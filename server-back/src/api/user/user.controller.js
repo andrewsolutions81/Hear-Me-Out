@@ -5,7 +5,14 @@ const jwt = require('jsonwebtoken');
 module.exports = {
   async listAllUsers(req, res) {
     try {
-      const users = await User.find().populate('projects comments').select('-password')
+      const users = await User.find().populate(
+        {
+          path:"comments",
+          path: "projects",
+            populate:{
+              path: "posts",
+            },
+        }).select('-password')
 
       res.status(200).json({ message:"✅ users found", info:users})
     } catch (error) {
@@ -16,7 +23,14 @@ module.exports = {
   async listSingleUser(req, res) {
     try {
       const id = req.body._id
-      const user = await User.findById(id).populate('projects comments').select('-_id -password')
+      const user = await User.findById(id).populate(
+        {
+          path:"comments",
+          path: "projects",
+            populate:{
+              path: "posts",
+            },
+        },).select('-_id -password')
 
       if(user === null){
         throw new Error(`No user matches the id`)

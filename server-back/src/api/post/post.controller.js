@@ -96,11 +96,11 @@ module.exports = {
   async deletePost(req, res) {
     try {
       const user = await User.findById(req.user);
-      const post = await Post.findById(req.params.id);
       const userId = user.id;
+      const post = await Post.findById(req.params.id);
       const postId = post.id
-      const projectId = post.postAuthor.id
-      const project = await Project.findById()
+      const project = await Project.findById(post.inProject)
+      const projectId = project._id.valueOf()
 
       if (user === null) {
         throw new Error(`No user matches the id`);
@@ -112,11 +112,7 @@ module.exports = {
         throw new Error("Unauthorized to delete this project");
       }
 
-      // const posts = project.posts
-      // const projectPosts = posts.filter((item) => item.toString() !==  postId.toString())
-      // project.save()
-
-      /* function removeItemOnce(arr, value) {
+      function removeItemOnce(arr, value) {
         const index = arr.indexOf(value);
         if (index > -1) {
           arr.splice(index, 1);
@@ -124,13 +120,13 @@ module.exports = {
         return arr;
       }
 
-      removeItemOnce(user.projects, projectId);
-      user.save() */
+      removeItemOnce(project.posts, postId);
+      project.save()
 
-      // await Post.deleteOne({ _id: postId });
+      await Post.deleteOne({ _id: postId });
       res
         .status(200)
-        .json({ message: "✅ succesfull post delete ", info:post });
+        .json({ message: "✅ succesfull post delete ", info:post,project });
     } catch (error) {
       res.status(400).json({
         message: "❌ post could Not be deleted ",
