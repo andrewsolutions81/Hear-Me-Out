@@ -1,6 +1,6 @@
 const { model, Schema, models } = require("mongoose");
-const User = require('../user/user.model');
-const Post = require('../comment/comment.model')
+// const User = require('../user/user.model');
+// const Post = require('../comment/comment.model')
 
 const projectsSchema = new Schema(
   {

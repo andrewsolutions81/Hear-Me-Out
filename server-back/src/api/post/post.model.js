@@ -7,7 +7,7 @@ const postSchema = new Schema(
       ref: "User",
       required: true,
     },
-    project:{
+    inProject:{
       type: Schema.Types.ObjectId,
       ref: "Project",
       required: true,
@@ -17,7 +17,8 @@ const postSchema = new Schema(
       required: true
     },
     media: [
-      {
+      {type: String},
+/*       {
         postImage: {
           type: String,
         },
@@ -27,7 +28,7 @@ const postSchema = new Schema(
         postThumbnail: {
           type: String,
         },
-      }
+      } */
     ],
     comments: [
       {

@@ -1,5 +1,5 @@
-const User = require("../user/user.model");
 const { findByIdAndUpdate } = require("./project.model");
+const User = require("../user/user.model");
 const Project = require("./project.model");
 const Post = require("../post/post.model");
 
@@ -131,10 +131,10 @@ module.exports = {
 
       res
         .status(200)
-        .json({ message: "✅ user delete succesfull", info:project });
+        .json({ message: "✅ project delete succesfull", info:project });
     } catch (error) {
       res.status(400).json({
-        message: "❌ user could Not be deleted",
+        message: "❌ project could Not be deleted",
         error: error.message,
       });
     }
