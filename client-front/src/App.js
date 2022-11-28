@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Header from './components/Header/Header';
 import Home from './pages/Home.jsx'
+import User from './pages/User.jsx'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           < Route path="*" element={<NotFound />} />
           <Route path="/" element={<Home />} />
+          <Route path="/user" element={<User />} />
         </Routes>
       </BrowserRouter>
     </div>
