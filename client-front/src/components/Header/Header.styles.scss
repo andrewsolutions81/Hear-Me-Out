@@ -1,5 +1,4 @@
 .header__main{
-  background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -21,12 +20,13 @@
 }
 
 .logedin-dropdown__list{
+  background-color: white;
   list-style-type: none;
-  background-color: red;
-/*   display: inline-block; */
-  padding-top: 75px;
+  cursor: pointer;
+  display: inline-block;
   position: absolute;
-  top: 105px;
   width: 170px;
+  right: 0%;
+  font-size: 1.5em;
+  text-indent: 1em;
 }
-

@@ -7,7 +7,7 @@ import "./Header.styles.scss";
 
 export default function Header() {
   const navigate = useNavigate();
-  const [isHovering, setIsHovering] = useState(false);
+  const [isUserMenuShown, setIsUserMenuShown] = useState(false);
 
   const navigateHome = () => {
     navigate("/");
@@ -15,53 +15,49 @@ export default function Header() {
 
   const navigateUser = () => {
     navigate("/user");
+    setIsUserMenuShown(false);
   };
 
-  const handleMouseOver = () => {
-    setIsHovering(true);
-  };
+  const handleAddPost = () => console.log("working");/////////////////
 
-  const handleMouseOut = () => {
-    setIsHovering(false);
+  const handleUserMenu = (event) => {
+    setIsUserMenuShown((current) => !current);
   };
-
-  const handleAddPost = () => console.log("working");
 
   return (
     <div className="header">
       <main className="header__main">
-          <img
-            className="header__logo"
-            src={hmoLogo}
-            alt="hear me out logo"
-            onClick={navigateHome}
-          />
-          <form className="header__search-form" action="">
-            <input type="search" placeholder="Get inspired" />
-          </form>
-          <img
-            className="new-post"
-            src={newpost}
-            alt="new-post-add-logo"
-            onClick={handleAddPost}
-          />
-          <div
-            className="user-options"
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-          >
-            <img className="header__user" src={noUserLogo} alt="no user logo" />
-          </div>
+        <img
+          className="header__logo"
+          src={hmoLogo}
+          alt="hear me out logo"
+          onClick={navigateHome}
+        />
+        <form className="header__search-form" action="">
+          <input type="search" placeholder="Get inspired" />
+        </form>
+        <img
+          className="new-post"
+          src={newpost}
+          alt="new-post-add-logo"
+          onClick={handleAddPost}
+        />
+        <div className="user-options" onClick={handleUserMenu}>
+          <img className="header__user" src={noUserLogo} alt="no user logo" />
+        </div>
       </main>
-      {isHovering && (
+      {isUserMenuShown && (
+      <aside>
         <nav className="logedin-dropdown">
-          <ul className="logedin-dropdown__list">
-            <li>Login</li>
-            <li>Sign Up</li>
-            <li>Log Out</li>
-          </ul>
+            <ul className="logedin-dropdown__list">
+              <li onClick={navigateUser}>Profile</li>
+              <li>Login</li>
+              <li>Sign Up</li>
+              <li>Log Out</li>
+            </ul>
         </nav>
+      </aside>
       )}
     </div>
   );
-} /* 20221209 before changing on hover to onClick */
+}
