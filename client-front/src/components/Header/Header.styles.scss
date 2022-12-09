@@ -1,5 +1,5 @@
-.header{
-  background-color: rgb(199, 199, 199);
+.header__main{
+  background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -21,7 +21,12 @@
 }
 
 .logedin-dropdown__list{
+  list-style-type: none;
   background-color: red;
+/*   display: inline-block; */
+  padding-top: 75px;
+  position: absolute;
+  top: 105px;
+  width: 170px;
 }
-
 
