@@ -1,0 +1,21 @@
+hr {
+  width: 50%;
+  position: fixed;
+  left: 25%;
+}
+
+.user__tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.user__tab:hover{
+  background-color: grey;
+}
+
+.user__tab.active {
+  background-color: green;
+}
+
