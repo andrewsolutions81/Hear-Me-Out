@@ -1,0 +1,20 @@
+.project {
+  margin-bottom: 2rem;
+}
+
+.project__container{
+  position: relative;
+  width: 80%;
+  left: 10%;
+  margin: 1em 0 1em 0;
+}
+
+.project__header{
+  display:flex;
+  justify-content: space-around;
+}
+
+.project__description {
+  margin-left: 3.2em;
+
+}

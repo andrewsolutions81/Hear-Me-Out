@@ -1,4 +1,4 @@
-import React, { Children, useState } from "react";
+import React, { useState } from "react";
 import DefaultUserLogo from "../img/no-user-logo2.png";
 import EveryProgress from "../components/EveryProgress/EveryProgress";
 import Projects from "../components/Projects/Projects";
@@ -6,13 +6,23 @@ import Comments from "../components/Comments/Comments";
 import "../styles/User.styles.scss";
 
 export default function User() {
-  const [activeTab, setActiveTab] = useState("Progress");
-  const [currentTabShown , setCurrentTabShown ] = useState("<Progress />");
+  const tabsComponents = [<EveryProgress />,<Projects />,<Comments />,];
 
-  const handleClick = (e) => {
+  const [activeTab, setActiveTab] = useState("Progress");
+  const [currentTabShown , setCurrentTabShown ] = useState(tabsComponents[0]);
+
+  const handleTab = (e) => {
     const tabClicked = e.target.id
     setActiveTab(tabClicked)
-    setCurrentTabShown(`<${tabClicked} />`) //maybe use an use effect on this one for rendereing as a second render
+    if(tabClicked === "Progress"){
+      setCurrentTabShown(tabsComponents[0])
+    }
+    if(tabClicked === "Projects"){
+      setCurrentTabShown(tabsComponents[1])
+    }
+    if(tabClicked === "Comments"){
+      setCurrentTabShown(tabsComponents[2])
+    }
   }
 
   return (
@@ -51,28 +61,26 @@ export default function User() {
           <button
             className={`user__tab ${activeTab === "Progress" ? "active" : ""}`}
             id="Progress"
-            onClick={handleClick}
+            onClick={handleTab}
           >
             Progress
           </button>
           <button
             className={`user__tab ${activeTab === "Projects" ? "active" : ""}`}
             id="Projects"
-            onClick={handleClick}
+            onClick={handleTab}
           >
             Projects
           </button>
           <button
             className={`user__tab ${activeTab === "Comments" ? "active" : ""}`}
             id="Comments"
-            onClick={handleClick}
+            onClick={handleTab}
           >
             Comments
           </button>
         </nav>
-        <div>
-{/*           {activeTab === "Progress" ? <EveryProgress /> : <Projects />}
-          <Comments /> */}
+        <div className="current-tab-shown">
           {currentTabShown}
         </div>
       </section>
