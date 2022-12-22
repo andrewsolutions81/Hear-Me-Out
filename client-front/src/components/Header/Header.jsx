@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import hmoLogo from "../../img/hear-me-out-logo.png";
 import newpost from "../../img/newpost.png";
 import noUserLogo from "../../img/no-user-logo.png";
+import Upload from "../Upload/Upload";
 import "./Header.styles.scss";
 
 export default function Header() {
   const navigate = useNavigate();
   const [isUserMenuShown, setIsUserMenuShown] = useState(false);
+  const [isAddPostShown, setIsAddPostShown] = useState(false);
 
   const navigateHome = () => {
     navigate("/");
@@ -18,7 +20,9 @@ export default function Header() {
     setIsUserMenuShown(false);
   };
 
-  const handleAddPost = () => console.log("working");/////////////////
+  const handleAddPost = (event) => {
+    setIsAddPostShown((current) => !current)
+  }
 
   const handleUserMenu = (event) => {
     setIsUserMenuShown((current) => !current);
@@ -46,6 +50,9 @@ export default function Header() {
           <img className="header__user" src={noUserLogo} alt="no user logo" />
         </div>
       </main>
+      {isAddPostShown && (
+        <Upload />
+      )}
       {isUserMenuShown && (
       <aside>
         <nav className="logedin-dropdown">
